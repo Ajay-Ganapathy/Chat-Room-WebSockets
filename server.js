@@ -12,7 +12,8 @@ websocketserver.on('connection', function connection(ws) {
   ws.on('message', function incoming(data) {
     websocketserver.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(data);
+        client.send(data.toString());
+        
       }
     })
   })
@@ -20,5 +21,6 @@ websocketserver.on('connection', function connection(ws) {
 
 
 server.listen(port, () => {
-  console.log(`Server is listening at Port ${port}`)
+  console.log(`Server is listening at Port ${port} `)
+  
 })
